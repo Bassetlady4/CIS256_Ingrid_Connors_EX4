@@ -15,3 +15,22 @@ num_guesses = 10 # sets number of tries before game is over
 display = ["_"] * len(word)
 
 print("Get ready to play Hangman!")
+
+while num_guesses > 0 and "_" in display:
+    print("Word:", " ".join(display))
+    print("Guesses left: ", num_guesses)
+    guess = input("Please choose a letter: ").lower()
+
+    if guess in guessed_letters:
+        print("You have already guessed that letter. Please try again")
+        continue
+
+    guessed_letters.append(guess)
+
+    if guess in word:
+        for i in range(len(word)):
+            if word[i] == guess:
+                display[i] = guess
+    else:
+        print("That letter is not in the word. Please try again")
+        num_guesses -= 1
