@@ -34,3 +34,8 @@ while num_guesses > 0 and "_" in display:
     else:
         print("That letter is not in the word. Please try again")
         num_guesses -= 1
+
+if "_" not in display:
+    print("Congratulations! You guessed the word!", word)
+else:
+    print("Sorry. Game over. The word was ", word)
