@@ -19,7 +19,7 @@ def main():
     print("Get ready to play Hangman!")
 
     while num_guesses > 0 and "_" in display:
-        print("Word:", " "join(display))
+        print("Word:", " ".join(display))
         print("Guesses left: ", num_guesses)
         guess = input("Please choose a letter: ").lower()
 
