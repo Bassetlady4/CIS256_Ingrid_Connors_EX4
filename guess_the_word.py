@@ -4,38 +4,42 @@
 
 import random
 
-# creating list of words that will be selected from for game
-word_list = ["apple", "calendar", "bookmark", "computer", "pencil", "spatula", "bandaid", "adapter"]
+def main():
 
-word = random.choice(word_list) # selects random word from word_list
-guessed_letters = [] # creates list to store wrong guesses
-num_guesses = 10 # sets number of tries before game is over
+    # creating list of words that will be selected from for game
+    word_list = ["apple", "calendar", "bookmark", "computer", "pencil", "spatula", "bandaid", "adapter"]
 
-# displays _ for every letter in word
-display = ["_"] * len(word)
+    word = random.choice(word_list) # selects random word from word_list
+    guessed_letters = [] # creates list to store wrong guesses
+    num_guesses = 10 # sets number of tries before game is over
 
-print("Get ready to play Hangman!")
+    # displays _ for every letter in word
+    display = ["_"] * len(word)
 
-while num_guesses > 0 and "_" in display:
-    print("Word:", " ".join(display))
-    print("Guesses left: ", num_guesses)
-    guess = input("Please choose a letter: ").lower()
+    print("Get ready to play Hangman!")
 
-    if guess in guessed_letters:
-        print("You have already guessed that letter. Please try again")
-        continue
+    while num_guesses > 0 and "_" in display:
+        print("Word:", " "join(display))
+        print("Guesses left: ", num_guesses)
+        guess = input("Please choose a letter: ").lower()
 
-    guessed_letters.append(guess)
+        if guess in guessed_letters:
+            print("You have already guessed that letter. Please try again")
+            continue
 
-    if guess in word:
-        for i in range(len(word)):
-            if word[i] == guess:
-                display[i] = guess
+        guessed_letters.append(guess)
+
+        if guess in word:
+            for i in range(len(word)):
+                if word[i] == guess:
+                    display[i] = guess
+        else:
+            print("That letter is not in the word. Please try again")
+            num_guesses -= 1
+
+    if "_" not in display:
+        print("Congratulations! You guessed the word!", word)
     else:
-        print("That letter is not in the word. Please try again")
-        num_guesses -= 1
+        print("Sorry. Game over. The word was ", word)
 
-if "_" not in display:
-    print("Congratulations! You guessed the word!", word)
-else:
-    print("Sorry. Game over. The word was ", word)
+main()
